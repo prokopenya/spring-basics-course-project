@@ -1,7 +1,7 @@
 package com.yet.spring.core;
 
 import com.yet.spring.core.beans.Event;
-import com.yet.spring.core.beans.FileEventLogger;
+import com.yet.spring.core.loggers.FileEventLogger;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;

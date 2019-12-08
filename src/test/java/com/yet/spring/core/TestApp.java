@@ -2,8 +2,8 @@ package com.yet.spring.core;
 
 import com.yet.spring.core.beans.Client;
 import com.yet.spring.core.beans.Event;
-import com.yet.spring.core.beans.EventLogger;
 import com.yet.spring.core.beans.EventType;
+import com.yet.spring.core.loggers.EventLogger;
 import org.junit.Test;
 
 import java.lang.reflect.InvocationTargetException;

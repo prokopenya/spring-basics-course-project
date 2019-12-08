@@ -1,5 +1,6 @@
-package com.yet.spring.core.beans;
+package com.yet.spring.core.loggers;
 
+import com.yet.spring.core.beans.Event;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

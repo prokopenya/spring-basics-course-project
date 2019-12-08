@@ -1,7 +1,7 @@
 package com.yet.spring.core;
 
-import com.yet.spring.core.beans.CacheFileEventLogger;
 import com.yet.spring.core.beans.Event;
+import com.yet.spring.core.loggers.CacheFileEventLogger;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;

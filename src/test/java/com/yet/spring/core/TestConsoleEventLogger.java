@@ -1,7 +1,7 @@
 package com.yet.spring.core;
 
-import com.yet.spring.core.beans.ConsoleEventLogger;
 import com.yet.spring.core.beans.Event;
+import com.yet.spring.core.loggers.ConsoleEventLogger;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

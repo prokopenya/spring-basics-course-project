@@ -48,11 +48,4 @@ public class Event {
     public Date getDate() {
         return date;
     }
-
-    @Override
-    public String toString() {
-        return "Event [id=" + id + ", msg=" + msg + ", date=" + dateFormat.format(date) + "]";
-    }
-
-
 }

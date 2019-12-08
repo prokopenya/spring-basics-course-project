@@ -1,6 +1,11 @@
 package com.yet.spring.core;
 
-import com.yet.spring.core.beans.*;
+import com.yet.spring.core.beans.Client;
+import com.yet.spring.core.beans.Event;
+import com.yet.spring.core.loggers.EventLogger;
+import com.yet.spring.core.loggers.FileEventLogger;
+import com.yet.spring.core.spring.AppConfig;
+import com.yet.spring.core.spring.LoggerConfig;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
