@@ -11,7 +11,7 @@ public class TestContext {
 
     @Test
     public void testPropertyPlaceholderSystemOverride() {
-        System.setProperty("client.id", "1");
+        System.setProperty("id", "1");
         ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
         Client client = ctx.getBean(Client.class);
         ctx.close();
