@@ -1,5 +1,8 @@
 package com.yet.spring.core.beans;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ConsoleEventLogger implements EventLogger {
 
     @Override

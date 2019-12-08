@@ -33,7 +33,7 @@ public class TestCacheFileEventLogger {
     @Test
     public void testLogEvent() throws IOException {
         Event event = new Event(new Date(), DateFormat.getDateInstance());
-        CacheFileEventLogger logger = new CacheFileEventLogger(file.getAbsolutePath(), 2);
+        CacheFileEventLogger logger = createAndInitCacheFileEventLogger();
         logger.init();
 
         String contents = FileUtils.readFileToString(this.file);
@@ -53,7 +53,7 @@ public class TestCacheFileEventLogger {
     @Test
     public void testDestroy() throws IOException {
         Event event = new Event(new Date(), DateFormat.getDateInstance());
-        CacheFileEventLogger logger = new CacheFileEventLogger(file.getAbsolutePath(), 2);
+        CacheFileEventLogger logger = createAndInitCacheFileEventLogger();
         logger.init();
 
         String contents = FileUtils.readFileToString(this.file);
@@ -70,4 +70,11 @@ public class TestCacheFileEventLogger {
         assertFalse("File not empty, cache was dumped", contents.isEmpty());
     }
 
+    private CacheFileEventLogger createAndInitCacheFileEventLogger()
+            throws IOException {
+        CacheFileEventLogger logger = new CacheFileEventLogger(file.getAbsolutePath(), 2);
+        logger.init();
+        logger.initCache();
+        return logger;
+    }
 }

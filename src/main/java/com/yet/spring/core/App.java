@@ -1,23 +1,32 @@
 package com.yet.spring.core;
 
-import com.yet.spring.core.beans.Client;
-import com.yet.spring.core.beans.Event;
-import com.yet.spring.core.beans.EventLogger;
-import com.yet.spring.core.beans.EventType;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.yet.spring.core.beans.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.Map;
 
+@Service
 public class App {
 
+    @Autowired
     private Client client;
+
+    @Resource(name = "defaultLogger")
     private EventLogger defaultLogger;
+
+    @Resource(name = "loggerMap")
     private Map<EventType, EventLogger> loggers;
 
     public static void main(String[] args) {
 
-        ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
+        ctx.register(AppConfig.class, LoggerConfig.class);
+        ctx.scan("com.yet.spring.core");
+        ctx.refresh();
+
         App app = (App) ctx.getBean("app");
 
         Client client = ctx.getBean(Client.class);
@@ -35,11 +44,10 @@ public class App {
         ctx.close();
     }
 
-    public App(Client client, EventLogger eventLogger, Map<EventType, EventLogger> loggers) {
-        super();
+    public App(Client client, EventLogger defaultLogger, Map<EventType, EventLogger> loggerMap) {
         this.client = client;
-        this.defaultLogger = eventLogger;
-        this.loggers = loggers;
+        this.defaultLogger = defaultLogger;
+        this.loggers = loggerMap;
 
     }
 
