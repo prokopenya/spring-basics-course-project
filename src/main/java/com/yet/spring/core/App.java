@@ -4,10 +4,9 @@ import com.yet.spring.core.beans.Client;
 import com.yet.spring.core.beans.Event;
 import com.yet.spring.core.beans.EventType;
 import com.yet.spring.core.loggers.EventLogger;
-import com.yet.spring.core.spring.AppConfig;
-import com.yet.spring.core.spring.LoggerConfig;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -25,14 +24,20 @@ public class App {
     @Resource(name = "loggerMap")
     private Map<EventType, EventLogger> loggers;
 
-    public static void main(String[] args) {
+    private String startupMessage;
 
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
-        ctx.register(AppConfig.class, LoggerConfig.class);
-        ctx.scan("com.yet.spring.core");
-        ctx.refresh();
+    public static void main(String[] args) {
+        /*
+          AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
+          ctx.register(AppConfig.class, LoggerConfig.class);
+          ctx.scan("com.yet.spring.core");
+          ctx.refresh();
+         */
+        ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
 
         App app = (App) ctx.getBean("app");
+
+        System.out.println(app.startupMessage);
 
         Client client = ctx.getBean(Client.class);
         System.out.println("Client says: " + client.getGreeting());
@@ -67,4 +72,13 @@ public class App {
 
         logger.logEvent(event);
     }
+
+    public void setStartupMessage(String startupMessage) {
+        this.startupMessage = startupMessage;
+    }
+
+    public EventLogger getDefaultLogger() {
+        return defaultLogger;
+    }
+
 }

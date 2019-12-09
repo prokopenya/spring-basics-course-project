@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.text.DateFormat;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -31,6 +32,11 @@ public class Event {
         this();
         this.date = date;
         this.dateFormat = dateFormat;
+    }
+
+    public static boolean isDay(int start, int end) {
+        LocalTime time = LocalTime.now();
+        return time.getHour() > start && time.getHour() < end;
     }
 
     public UUID getId() {
