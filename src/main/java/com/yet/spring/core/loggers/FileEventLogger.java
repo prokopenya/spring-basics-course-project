@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 
 @Component
-public class FileEventLogger implements EventLogger {
+public class FileEventLogger extends AbstractLogger {
 
     private File file;
 
