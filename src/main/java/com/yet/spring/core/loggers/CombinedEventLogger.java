@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.Collection;
+import java.util.Collections;
 
 @Component
 public class CombinedEventLogger extends AbstractLogger {
@@ -15,6 +16,10 @@ public class CombinedEventLogger extends AbstractLogger {
     public CombinedEventLogger(Collection<EventLogger> loggers) {
         super();
         this.loggers = loggers;
+    }
+
+    public Collection<EventLogger> getLoggers() {
+        return Collections.unmodifiableCollection(loggers);
     }
 
     @Override
