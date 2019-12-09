@@ -4,7 +4,7 @@ import com.yet.spring.core.beans.Event;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ConsoleEventLogger implements EventLogger {
+public class ConsoleEventLogger extends AbstractLogger {
 
     @Override
     public void logEvent(Event event) {

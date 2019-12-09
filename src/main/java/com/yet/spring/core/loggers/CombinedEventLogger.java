@@ -7,7 +7,7 @@ import javax.annotation.Resource;
 import java.util.Collection;
 
 @Component
-public class CombinedEventLogger implements EventLogger {
+public class CombinedEventLogger extends AbstractLogger {
 
     @Resource(name = "combinedLoggers")
     private final Collection<EventLogger> loggers;
