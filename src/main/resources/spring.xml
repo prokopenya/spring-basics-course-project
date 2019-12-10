@@ -41,9 +41,11 @@
         <constructor-arg ref="loggerMap"/>
 
         <property name="startupMessage" value="#{'Hello user ' +
-            ( systemProperties['os.arch'].equals('x86') ?
+            ( systemProperties['os.name'].contains('Windows') ?
                 systemEnvironment['USERNAME'] : systemEnvironment['USER'] ) +
                 '. Default logger is ' + app.defaultLogger.name }"/>
+
+        <!--<property name="statisticsAspect" ref="statisticsAspect"/>-->
     </bean>
 
     <bean id="event" class="com.yet.spring.core.beans.Event" scope="prototype">

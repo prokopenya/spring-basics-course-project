@@ -32,7 +32,7 @@ public class App {
           ctx.register(AppConfig.class, LoggerConfig.class);
           ctx.scan("com.yet.spring.core");
           ctx.refresh();
-         */
+*/
         ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
 
         App app = (App) ctx.getBean("app");
